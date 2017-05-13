@@ -16,12 +16,12 @@ RSpec.describe Post, type: :model do
     expect(invalid_post).to_not be_valid
   end
 
-  context "when email is already taken" do
+  context "when title is already taken" do
     it "is invalid" do
-      valid_user = FactoryGirl.create(:user, email: Faker::Internet.email)
-      invalid_user = FactoryGirl.build(:user, email: valid_user.email)
+      valid_post = FactoryGirl.create(:post)
+      invalid_post = FactoryGirl.build(:post, title: valid_post.title)
 
-      expect(invalid_user).to_not be_valid
+      expect(invalid_post).to_not be_valid
     end
   end
 end
