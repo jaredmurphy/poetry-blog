@@ -1,12 +1,12 @@
 class PostsController < ApplicationController 
-  before_filter :is_admin?, only: [:new, :create]
+  before_filter :is_admin?, only: [:new, :create, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.all
   end
   
   def show 
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -18,17 +18,33 @@ class PostsController < ApplicationController
     post.user = current_user
     if post.save
       flash[:notice] = "Post created successfully"
-      redirect_back fallback_location: root_path
+      redirect_to post 
     else 
       flash[:alert] = "Post not created: #{post.errors.full_messages.first}"
       redirect_back fallback_location: root_path
     end
   end 
 
+  def edit 
+  end
+
+  def update
+    if @post.update(post_params)
+      flash[:notice] = "Post updated successfully"
+      redirect_to @post
+    else 
+      render :edit 
+    end
+  end
+
   private 
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :user_id)  
+    params.require(:post).permit(:title, :description, :image)  
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
   def is_admin?

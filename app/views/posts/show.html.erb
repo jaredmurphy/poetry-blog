@@ -9,5 +9,9 @@
 
 <br />
 
+<% if current_user && current_user.admin? %>
+  <%= link_to "Edit this post", edit_post_path(@post) %>
+<% end %>
+
 <%= link_to "All Posts", posts_path %>
 
