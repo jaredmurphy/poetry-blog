@@ -21,6 +21,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'rspec-rails'

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController 
+  before_filter :authenticate_user!, only: [:new, :create]
+
   def index
     @posts = Post.all
   end
@@ -8,13 +10,19 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if current_user.admin?
+      @post = Post.new
+    else 
+      flash[:alert] = "Only administrators can create posts"
+      redirect_back fallback_location: root_path
+    end
   end
 
   def create
     post = Post.new(post_params)
     if current_user.admin?
       post.user = current_user
+      byebug
       if post.save
         flash[:notice] = "Post created successfully"
         redirect_back fallback_location: root_path
