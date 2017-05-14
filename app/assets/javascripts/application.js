@@ -14,3 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+////= require materialize-sprockets
+
+//var hideShowNav = function(){
+//  var scrolling = false;
+//
+//  $(window).on('scroll', function(){
+//    if (!scrolling) {
+//      scrolling = true;
+//      (!window.requestAnimationFrame) 
+//        ? setTimeout(autoHideHeader, 250)
+//        : requestAnimationFrame(autoHideHeader);
+//    }
+//  }
+//}
+
+$(document).ready(function(){
+  console.log('script loaded');
+ 
+  // Initializes sidebar button
+  $(".button-collapse").sideNav(); 
+
+  //hideShowNav();
+  //
+  //
+  
+
+});

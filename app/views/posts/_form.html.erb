@@ -3,23 +3,27 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
+
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
 
-
   <% if @post.image.url != "/images/original/missing.png" %>
     <img src=<%= @post.image.url %> />
-    <br />
   <% end %> 
 
+  <br />
+
   <div class="actions">
-    <%= f.submit 'Make a Post' %>
+    <%= f.button 'Make a Post', class: "button", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Submitting..." } %>
     <%= link_to 'Nevermind', posts_path, class: 'button' %>
   </div>
 <% end %>
+
+

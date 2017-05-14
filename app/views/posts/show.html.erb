@@ -4,6 +4,7 @@
   <%= @post.title %> 
   <span> - <%= @post.created_at.localtime.strftime("%b %d %I:%M") %> </span>
 </h5>
+
 <p><%= @post.description %> </p>
 <img src=<%= @post.image.url %> />
 
@@ -17,11 +18,12 @@
 
 <%= form_for [@post, Comment.new] do |f| %>
   <%= f.text_area :body, placeholder: "Add a comment" %><br/>
-  <%= f.submit "Add Comment" %>
+  <%= f.button "Add Comment", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Submitting..." } %>
+
 <% end %>
 
-<ul>
-  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+<ul class="collection">
+  <%= render partial: 'comments/comment', collection: @post.comments %>
 </ul>
 
 <%= link_to "All Posts", posts_path %>

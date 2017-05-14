@@ -1,14 +1,18 @@
-<li>
-  <%= comment.body %> -
-  <span> <%= comment.user.email %> </span>
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+<li class="collection-item avatar">
+  <span class="title"> 
+    <%= comment.user.email %> 
+    <small> Submitted <%= time_ago_in_words(comment.created_at) %> ago </small>
+  </span>
+
+  <p> <%= comment.body %> </p>
 
   <%= form_for [comment, Comment.new] do |f| %>
     <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-    <%= f.submit "Reply"  %>
+    <%= f.button "Reply", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Submitting..." } %>
+
   <% end %>
 
-  <ul>
+  <ul class="collection">
     <%= render partial: 'comments/comment', collection: comment.comments %>
   </ul>
 

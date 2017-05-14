@@ -12,4 +12,18 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require material_icons
  */
+
+@import "materialize";
+
+.navbar {
+  height: 64px;
+  transition: top 0.2s ease-in-out;
+}
+
+.navbar.is-hidden {
+  transform: translateY(-100%);
+}
+

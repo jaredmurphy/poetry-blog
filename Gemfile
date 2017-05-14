@@ -19,6 +19,9 @@ gem 'cancancan'
 gem 'rolify'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'materialize-sass'
+gem 'material_icons'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'dotenv-rails'
