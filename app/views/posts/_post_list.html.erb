@@ -1,5 +1,11 @@
 <% @posts.each do |post| %>
-  <p><%= post.title %></p>
+  <%= link_to post_path(post.id) do %>
+    <h5><%= post.title %>
+      <span> - <%= post.created_at.localtime.strftime("%b %d %I:%M") %> </span>
+    </h5>
+
+    <img src=<%= post.image.url(:small) %> />
+  <% end %>
+
   <p><%= post.description %></p>
-  <img src=<%= post.image.url(:small) %> />
 <% end %>

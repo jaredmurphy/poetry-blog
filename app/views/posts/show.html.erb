@@ -1,0 +1,13 @@
+<h3>Post</h3>
+
+<h5>
+  <%= @post.title %> 
+  <span> - <%= @post.created_at.localtime.strftime("%b %d %I:%M") %> </span>
+</h5>
+<p><%= @post.description %> </p>
+<img src=<%= @post.image.url %> />
+
+<br />
+
+<%= link_to "All Posts", posts_path %>
+
