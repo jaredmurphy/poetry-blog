@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments, as: :commentable 
 
   validates :title, uniqueness: true, presence: true
   validates :description, presence: true

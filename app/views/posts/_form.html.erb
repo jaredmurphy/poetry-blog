@@ -12,7 +12,8 @@
     <%= f.file_field :image %>
   </div>
 
-  <% if @post.image %>
+
+  <% if @post.image.url != "/images/original/missing.png" %>
     <img src=<%= @post.image.url %> />
     <br />
   <% end %> 

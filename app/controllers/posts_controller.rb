@@ -1,5 +1,6 @@
 class PostsController < ApplicationController 
-  before_filter :is_admin?, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :is_admin?, only: [:new, :create, :edit, :update]
   before_action :set_post, only: [:show, :edit, :update]
 
   def index

@@ -1,7 +1,7 @@
 <h1>Posts</h1>
 
 <% if current_user && current_user.admin? %>
-  <%= link_to "New Post", posts_new_path %>
+  <%= link_to "New Post", new_post_path %>
 <% end %>
 
 <%= render "post_list" %>
