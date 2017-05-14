@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+  <p><%= post.title %></p>
+  <p><%= post.description %></p>
+  <img src=<%= post.image.url(:small) %> />
+<% end %>

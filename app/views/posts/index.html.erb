@@ -1,9 +1,7 @@
 <h1>Posts</h1>
 
-<%= link_to "New Post", posts_new_path %>
-
-<% @posts.each do |post| %>
-  <p><%= post.title %></p>
-  <p><%= post.description %></p>
-  <img src=<%= post.image.url(:small) %> />
+<% if current_user && current_user.admin? %>
+  <%= link_to "New Post", posts_new_path %>
 <% end %>
+
+<%= render "post_list" %>

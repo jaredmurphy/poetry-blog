@@ -1,5 +1,5 @@
 class PostsController < ApplicationController 
-  before_filter :authenticate_user!, only: [:new, :create]
+  before_filter :is_admin?, only: [:new, :create]
 
   def index
     @posts = Post.all
@@ -10,26 +10,15 @@ class PostsController < ApplicationController
   end
 
   def new
-    if current_user.admin?
-      @post = Post.new
-    else 
-      flash[:alert] = "Only administrators can create posts"
-      redirect_back fallback_location: root_path
-    end
+    @post = Post.new
   end
 
   def create
     post = Post.new(post_params)
-    if current_user.admin?
-      post.user = current_user
-      byebug
-      if post.save
-        flash[:notice] = "Post created successfully"
-        redirect_back fallback_location: root_path
-      else 
-        flash[:alert] = "Post not created: #{post.errors.full_messages.first}"
-        redirect_back fallback_location: root_path
-      end
+    post.user = current_user
+    if post.save
+      flash[:notice] = "Post created successfully"
+      redirect_back fallback_location: root_path
     else 
       flash[:alert] = "Post not created: #{post.errors.full_messages.first}"
       redirect_back fallback_location: root_path
@@ -40,5 +29,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :image, :user_id)  
+  end
+
+  def is_admin?
+    unless current_user.admin?
+      flash[:alert] = "only administrators can create posts"
+      redirect_back fallback_location: root_path
+    end
   end
 end
