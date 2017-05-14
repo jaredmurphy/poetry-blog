@@ -1,5 +1,7 @@
 <h1>Posts</h1>
 
+<%= link_to "New Post", posts_new_path %>
+
 <% @posts.each do |post| %>
   <p><%= post.title %></p>
   <p><%= post.description %></p>

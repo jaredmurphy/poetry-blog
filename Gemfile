@@ -17,6 +17,8 @@ gem 'better_errors'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'faker'
