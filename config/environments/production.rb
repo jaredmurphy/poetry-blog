@@ -30,4 +30,5 @@ Rails.application.configure do
   end
 
   config.active_record.dump_schema_after_migration = false
+  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 end

@@ -22,7 +22,6 @@ gem 'aws-sdk'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
-gem 'lazyload-rails'
 
 group :development, :test do
   gem 'dotenv-rails'

@@ -4,7 +4,7 @@
       <span> - <%= post.created_at.localtime.strftime("%b %d %I:%M") %> </span>
     </h5>
 
-    <%= image_tag post.image.url(:small), alt: "OMG a cat!", lazy: true %> 
+    <%= image_tag post.image.url(:small) %> 
   <% end %>
 
   <p><%= post.description %></p>
