@@ -7,6 +7,12 @@
 
 @import "materialize";
 
+/* Change materialize syles */
+
+#sidenav-overlay {
+  z-index: 1;
+}
+
 .navbar {
   height: 64px;
   transition: transform 1s ease-in-out;

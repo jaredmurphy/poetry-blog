@@ -1,8 +1,7 @@
 <div class="navbar navbar-fixed">
   <nav class="nav-wrapper">
     <ul>
-      <a href="#!" class="brand-logo">Logo</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse">
+      <a href="#" data-activates="slide-out" class="button-collapse">
         <i class="material-icons">menu</i>
       </a>
 
@@ -23,21 +22,22 @@
         <% end %>
       </ul>
 
-      <ul class="side-nav" id="mobile-demo">
-        <li><%= link_to "Home", root_path %></li>
-
-        <% if current_user %>
-          <li>
-            <%= link_to 'Logout', 
-              destroy_user_session_path, 
-              :method => :delete %> 
-          </li>
-
-        <% else %>
-          <li> <%= link_to "Login",  new_user_session_path %> </li>
-        <% end %>
-
-      </ul>
   </nav>
 </div>
 
+<ul class="side-nav" id="slide-out">
+  <li><%= link_to "Home", root_path %></li>
+
+  <li><a href="/about">About</a></li>
+
+  <% if current_user %>
+    <li>
+      <%= link_to 'Logout', 
+        destroy_user_session_path, 
+        :method => :delete %> 
+    </li>
+
+  <% else %>
+    <li> <%= link_to "Login",  new_user_session_path %> </li>
+  <% end %>
+</ul>
